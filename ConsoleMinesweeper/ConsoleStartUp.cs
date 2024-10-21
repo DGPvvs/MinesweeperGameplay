@@ -1,19 +1,27 @@
 ﻿namespace ConsoleMinesweeper
 {
-	using MinesweeperGamePlay.AreaStructure;
-	using MinesweeperGamePlay.Enums;
-	using MinesweeperGamePlay.FieldsStructure;
+	using ConsoleMinesweeper.IO;
+	using MinesweeperGamePlay.GamePlay;
+	using MinesweeperGamePlay.GamePlay.Contracts;
+	using MinesweeperGamePlay.IO.Contracts;
 
 	public class ConsoleStartUp
 	{
 		static void Main(string[] args)
 		{
-			Area area = new Area(10, 10);
+			IReader reader = new ConsoleReader();
+			IWriter writer = new ConsoleWriter();
 
-			(area[0, 0] as ValueField)?.SetSymbol(FieldSymbol.One);
-			(area[0, 0] as VisibleField)?.SetVisible(true);
-			Console.WriteLine(area[0, 0] as VisibleField);
-			Console.WriteLine(area.ToString());
-		}
+			IGame game = new Game(reader, writer, 16, 50);
+			game.Run();
+			//Area area = new Area(16, 50);
+
+			//(area[0, 0] as ValueField)?.SetSymbol(FieldSymbol.One);
+			//(area[0, 0] as VisibleField)?.SetVisible(true);
+			//Console.WriteLine(area[0, 0] as VisibleField);
+			//area.SetAllVisible();
+			//Console.WriteLine(area.ToString());
+			//Console.WriteLine(((char)(FieldSymbol.Mine)).ToString());
+		}	
 	}
 }

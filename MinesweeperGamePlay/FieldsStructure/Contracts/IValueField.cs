@@ -2,7 +2,7 @@
 {
 	using MinesweeperGamePlay.Enums;
 
-	interface IValueField : IField
+	public interface IValueField : IField
 	{
 		public FieldSymbol Value { get; }
 		public void SetSymbol(FieldSymbol symbol);

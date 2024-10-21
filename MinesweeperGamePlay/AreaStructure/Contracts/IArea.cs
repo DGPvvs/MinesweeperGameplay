@@ -2,9 +2,10 @@
 {
 	using MinesweeperGamePlay.FieldsStructure.Contracts;
 
-	interface IArea
+	public interface IArea
 	{
-		IField this[int x, int y] { get; }
-		void InitArea(int mineNum);
+		public IField this[int x, int y] { get; }
+		public void InitArea(int mineNum);
+		public void SetAllVisible();
 	}
 }

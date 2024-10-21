@@ -2,8 +2,8 @@
 {
 	using MinesweeperGamePlay.AreaStructure.Contracts;
 	using MinesweeperGamePlay.Enums;
-	using MinesweeperGamePlay.FieldsStructure.Contracts;
 	using MinesweeperGamePlay.FieldsStructure;
+	using MinesweeperGamePlay.FieldsStructure.Contracts;
 	using System.Text;
 
 	public class Area : IArea
@@ -49,6 +49,19 @@
 			}
 		}
 
+		public void SetAllVisible()
+		{
+			for (int i = 0; i < this.maxX; i++)
+			{
+				for (int j = 0; j < this.maxY; j++)
+				{
+					//IField field = new VisibleField(i, j, FieldSymbol.Empty);
+					//(field as VisibleField).SetVisible(true);
+					(this.fields[i, j] as VisibleField).SetVisible(true);
+				}
+			}
+		}
+
 		public void InitArea(int mineNum = 30)
 		{
 			Random rnd = new Random();
@@ -63,6 +76,7 @@
 				int y = rnd.Next(0, this.maxY);
 
 				IField field = new VisibleField(x, y, FieldSymbol.Mine);
+				//(field as VisibleField).SetVisible(true);
 
 				if (!set.Contains(field))
 				{
@@ -71,6 +85,8 @@
 					mineNum--;
 				}
 			} while (mineNum > 0);
+
+			//Console.WriteLine(this.ToString());
 
 			this.SetNumbers();
 		}
@@ -81,7 +97,7 @@
 			{
 				for (int j = 0; j < this.maxY; j++)
 				{
-					IField field = new VisibleField(i, j, FieldSymbol.Noting);
+					IField field = new VisibleField(i, j, FieldSymbol.Empty);
 					//(field as VisibleField).SetVisible(true);
 					this.fields[i, j] = field;
 				}
@@ -94,10 +110,10 @@
 			StringBuilder sbRow = new StringBuilder();
 			for (int i = 0; i < this.maxX; i++)
 			{
-				sbRow.Clear();
+				sbRow.Clear().Append($"|");
 				for (int j = 0; j < this.maxY; j++)
 				{
-					sbRow.Append($"{this.fields[i, j]?.ToString()} ");
+					sbRow.Append($"{(this.fields[i, j] as VisibleField)?.ToString()}|");
 				}
 
 				sb.AppendLine(sbRow.ToString());
@@ -116,7 +132,7 @@
 
 					int neighborMineCount = 0;
 
-					if (field?.Value == FieldSymbol.Noting)
+					if (field?.Value == FieldSymbol.Empty)
 					{
 						for (int xx = x - 1; xx <= x + 1; xx++)
 						{
@@ -131,7 +147,10 @@
 						if (neighborMineCount > 0)
 						{
 							//(this.fields[x, y] as ValueField).SetSymbol((FieldSymbol)neighborMineCount);
-							field.SetSymbol((FieldSymbol)neighborMineCount);
+							//(this.fields[x, y] as ValueField).SetSymbol((FieldSymbol)neighborMineCount);
+							//field.SetSymbol((FieldSymbol)(neighborMineCount + (char)FieldSymbol.Zero));
+							field.SetSymbol((FieldSymbol)(neighborMineCount + 48));
+							//Console.WriteLine(neighborMineCount + 48);
 						}
 					}
 				}
