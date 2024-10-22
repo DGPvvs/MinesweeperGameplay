@@ -35,6 +35,15 @@
 			GameStatus status = this.GameLoop();
 			this.area.SetAllVisible();
 			this.writer.WriteLine(this.area.ToString());
+
+			if (status == GameStatus.Win)
+			{
+				this.writer.WriteLine("WIN");
+			}
+			else
+			{
+				this.writer.WriteLine("LOSE");
+			}
 		}
 
 		private GameStatus GameLoop()
@@ -46,12 +55,21 @@
 				this.writer.Write("Въведете позиция във формат X,Y: ");
 				string answer = this.reader.ReadLine();
 
+				string[] coordinates = answer.Split(',');
+
+				int x = int.Parse(coordinates[0]);
+				int y = int.Parse(coordinates[1]);
+
+				result = this.area.StateOfArea(x, y);
+
+				if (result == GameStatus.InProgress)
+				{
+					this.writer.WriteLine(this.area.ToString());
+				}
 
 			} while (result == GameStatus.InProgress);
 
-
-
-			throw new NotImplementedException();
+			return result;
 		}
 	}
 }

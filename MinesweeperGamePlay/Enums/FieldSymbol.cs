@@ -2,8 +2,8 @@
 {
 	public enum FieldSymbol
 	{
-		Noting = 0x00,  //null
-		Empty = 0x20,   //' '
+		Noting = 0x00,	//null
+		Empty = 0x20,   //' '		
 		Zero = 0x30,    //'0'
 		One = 0x31,     //'1'
 		Two = 0x32,     //'2'
@@ -13,6 +13,7 @@
 		Six = 0x36,     //'6'
 		Seven = 0x37,   //'7'
 		Eight = 0x38,   //'8'
+		Hide = 0x48,    //'H'
 		Mine = 0x4D,    //'M'
 	}
 }

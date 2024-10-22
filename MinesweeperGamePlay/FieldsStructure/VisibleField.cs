@@ -23,6 +23,6 @@
 			this.IsVisible = visible;
 		}
 
-		public override string ToString() => this.IsVisible ? base.ToString() : ((char)FieldSymbol.Noting).ToString();
+		public override string ToString() => this.IsVisible ? base.ToString() : ((char)FieldSymbol.Hide).ToString();
 	}
 }
