@@ -1,11 +1,10 @@
 ﻿namespace MinesweeperGamePlay.GamePlay
 {
-	using MinesweeperGamePlay.AreaStructure.Contracts;
 	using MinesweeperGamePlay.AreaStructure;
+	using MinesweeperGamePlay.AreaStructure.Contracts;
+	using MinesweeperGamePlay.Enums;
 	using MinesweeperGamePlay.GamePlay.Contracts;
 	using MinesweeperGamePlay.IO.Contracts;
-	using System;
-	using MinesweeperGamePlay.Enums;
 
 	public class Game : IGame
 	{
@@ -56,15 +55,21 @@
 				string answer = this.reader.ReadLine();
 
 				string[] coordinates = answer.Split(',');
+				int x = 0;
+				int y = 0;
+				bool isCorrect = (int.TryParse(coordinates[0], out x) && int.TryParse(coordinates[1], out y));				
 
-				int x = int.Parse(coordinates[0]);
-				int y = int.Parse(coordinates[1]);
-
-				result = this.area.StateOfArea(x, y);
-
-				if (result == GameStatus.InProgress)
+				if (isCorrect)
 				{
-					this.writer.WriteLine(this.area.ToString());
+					x--;
+					y--;
+					result = this.area.StateOfArea(x, y);
+
+					if (result == GameStatus.InProgress)
+					{
+						this.writer.Clear();
+						this.writer.WriteLine(this.area.ToString());
+					}
 				}
 
 			} while (result == GameStatus.InProgress);

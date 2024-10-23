@@ -9,10 +9,10 @@
 	{
 		static void Main(string[] args)
 		{
-			IReader reader = new ConsoleReader();
+			//IReader reader = new ConsoleReader();
 			IWriter writer = new ConsoleWriter();
 
-			IGame game = new Game(reader, writer, 16, 50);
+			IGame game = new Game((writer as ConsoleReader)!, writer, 17, 26);
 			game.Run();
 			//Area area = new Area(16, 50);
 
