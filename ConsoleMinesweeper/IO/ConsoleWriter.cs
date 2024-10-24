@@ -1,5 +1,7 @@
 ﻿namespace ConsoleMinesweeper.IO
 {
+	using MinesweeperGamePlay.AreaStructure.Contracts;
+	using MinesweeperGamePlay.AreaStructure;
 	using MinesweeperGamePlay.IO.Contracts;
 	using System.Text;
 
@@ -10,13 +12,22 @@
 
 		}
 
-		public void Write(string s)
+		private void Write(string s)
 		{
 			this.Sb.Clear().Append(s);
 			Console.Write(this.Sb.ToString());
 		}
 
-		public void WriteLine(string s)
+		public void WriteOutput(object obj)
+		{
+			if (obj is string)
+			{
+				this.Write(obj as string);
+			}
+
+		}
+
+		private void WriteLine(string s)
 		{
 			string[] temp = s.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
 
@@ -33,7 +44,7 @@
 			int rulerRows = rows.ToString().Length;
 			int rulerColls = colls.ToString().Length;
 
-			string indent = new string(' ', rulerColls);
+			string indent = new String(' ', rulerColls);
 
 			this.Sb.Clear();
 			StringBuilder sbRow = new StringBuilder().Append(indent).Append('|');
@@ -49,16 +60,28 @@
 				sbRow.Clear().Append(indent).Append('|');
 			}
 
-			this.Sb.Append(indent).AppendLine(new string('_', 2 * colls - 1));
+			this.Sb.Append(indent).AppendLine(new String('_', 2 * colls - 1));
 
 			for (int row = 0; row < temp.Length; row++)
 			{
 				this.Sb
-					.Append(new string('0', rulerColls - (row + 1).ToString().Length))
+					.Append(new String('0', rulerColls - (row + 1).ToString().Length))
 					.Append((row + 1).ToString())
 					.AppendLine(temp[row]);
 			}
 			Console.WriteLine(this.Sb.ToString());
+		}
+
+		public void WriteLineOutput(object obj)
+		{
+			if (obj is string)
+			{
+				this.WriteLine(obj as string);
+			}
+			else if (obj is IArea)
+			{
+				this.WriteLine((obj as Area).ToString());
+			}
 		}
 
 		public void Clear()

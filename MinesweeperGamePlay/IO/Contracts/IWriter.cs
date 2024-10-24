@@ -2,8 +2,8 @@
 {
 	public interface IWriter
 	{
-		void Clear();
-		void Write(string s);
-		void WriteLine(string s);
+		public void Clear();
+		public void WriteOutput(object obj);
+		public void WriteLineOutput(object obj);
 	}
 }

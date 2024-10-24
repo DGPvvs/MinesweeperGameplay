@@ -33,26 +33,27 @@
 		{
 			GameStatus status = this.GameLoop();
 			this.area.SetAllVisible();
-			this.writer.WriteLine(this.area.ToString());
+			this.writer.WriteLineOutput(this.area);
 
 			if (status == GameStatus.Win)
 			{
-				this.writer.WriteLine("WIN");
+				this.writer.WriteLineOutput("WIN");
 			}
 			else
 			{
-				this.writer.WriteLine("LOSE");
+				this.writer.WriteLineOutput("LOSE");
 			}
 		}
 
 		private GameStatus GameLoop()
 		{
 			GameStatus result = GameStatus.InProgress;
+			this.writer.WriteLineOutput(this.area);
 
 			do
 			{
-				this.writer.Write("Въведете позиция във формат X,Y: ");
-				string answer = this.reader.ReadLine();
+				this.writer.WriteOutput("Въведете позиция във формат X,Y: ");
+				string answer = this.reader.ReadInput() as string;
 
 				string[] coordinates = answer.Split(',');
 				int x = 0;
@@ -68,8 +69,13 @@
 					if (result == GameStatus.InProgress)
 					{
 						this.writer.Clear();
-						this.writer.WriteLine(this.area.ToString());
+						this.writer.WriteLineOutput(this.area);
 					}
+				}
+
+				if (answer == "Wrong")
+				{
+					result = GameStatus.Lose;
 				}
 
 			} while (result == GameStatus.InProgress);

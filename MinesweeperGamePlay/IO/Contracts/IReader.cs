@@ -2,7 +2,7 @@
 {
 	public interface IReader
 	{
-		string ReadLine();
-		void Free();
+		public object ReadInput();
+		public void Free();
 	}
 }

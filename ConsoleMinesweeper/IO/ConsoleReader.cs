@@ -24,6 +24,8 @@
 			return this.Sb.ToString();
 		}
 
+		public object ReadInput() => this.ReadLine() as object;
+
 		public void Free()
 		{
 

@@ -84,8 +84,6 @@
 			{
 				for (int j = 0; j < this.maxY; j++)
 				{
-					//IField field = new VisibleField(i, j, FieldSymbol.Empty);
-					//(field as VisibleField).SetVisible(true);
 					(this.fields[i, j] as VisibleField).SetVisible(true);
 				}
 			}
@@ -105,7 +103,6 @@
 				int y = rnd.Next(0, this.maxY);
 
 				IField field = new VisibleField(x, y, FieldSymbol.Mine);
-				//(field as VisibleField).SetVisible(true);
 
 				if (!set.Contains(field))
 				{
@@ -114,8 +111,6 @@
 					mineNum--;
 				}
 			} while (mineNum > 0);
-
-			//Console.WriteLine(this.ToString());
 
 			this.SetNumbers();
 		}
@@ -127,7 +122,6 @@
 				for (int j = 0; j < this.maxY; j++)
 				{
 					IField field = new VisibleField(i, j, FieldSymbol.Empty);
-					//(field as VisibleField).SetVisible(true);
 					this.fields[i, j] = field;
 				}
 			}
@@ -175,11 +169,7 @@
 
 						if (neighborMineCount > 0)
 						{
-							//(this.fields[x, y] as ValueField).SetSymbol((FieldSymbol)neighborMineCount);
-							//(this.fields[x, y] as ValueField).SetSymbol((FieldSymbol)neighborMineCount);
-							//field.SetSymbol((FieldSymbol)(neighborMineCount + (char)FieldSymbol.Zero));
 							field.SetSymbol((FieldSymbol)(neighborMineCount + 48));
-							//Console.WriteLine(neighborMineCount + 48);
 						}
 					}
 				}
@@ -213,7 +203,7 @@
 			}
 			else if (range <= 30 * 16)
 			{
-				return 70;
+				return 10;
 			}
 
 			return 130;
