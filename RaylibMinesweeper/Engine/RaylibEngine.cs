@@ -63,8 +63,8 @@
 
 				if (x >= 0 && y >= 0)
 				{
-					int row = x / (CELL_SIZE + 1);
-					int coll = y / (CELL_SIZE + 1);
+					int row = x / (CELL_SIZE);
+					int coll = y / (CELL_SIZE);
 
 					gameStatus = area.StateOfArea(row, coll);
 				}
