@@ -5,9 +5,11 @@
 
 	public interface IArea
 	{
-		IField this[int x, int y] { get; }
-		void InitArea(int percent);
-		void SetAllVisible();
-		GameStatus StateOfArea(int x, int y);
+		public int MaxX { get; }
+		public int MaxY { get; }
+		public IField this[int x, int y] { get; }
+		public void InitArea(int percent);
+		public void SetAllVisible();
+		public GameStatus StateOfArea(int x, int y);
 	}
 }

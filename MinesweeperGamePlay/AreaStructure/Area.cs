@@ -30,6 +30,10 @@
 			this.InitArea(this.minesCount);
 		}
 
+		public int MaxX => this.maxX;
+
+		public int MaxY => this.maxY;
+
 		public IField this[int x, int y]
 		{
 			get
@@ -203,7 +207,7 @@
 			}
 			else if (range <= 30 * 16)
 			{
-				return 10;
+				return 70;
 			}
 
 			return 130;

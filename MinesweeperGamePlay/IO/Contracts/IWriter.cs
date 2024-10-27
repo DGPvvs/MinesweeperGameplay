@@ -1,6 +1,6 @@
 ﻿namespace MinesweeperGamePlay.IO.Contracts
 {
-	public interface IWriter
+	public interface IWriter : IReader
 	{
 		public void Clear();
 		public void WriteOutput(object obj);

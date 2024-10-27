@@ -10,13 +10,7 @@
 		public ConsoleWriter() : base()
 		{
 
-		}
-
-		private void Write(string s)
-		{
-			this.Sb.Clear().Append(s);
-			Console.Write(this.Sb.ToString());
-		}
+		}		
 
 		public void WriteOutput(object obj)
 		{
@@ -24,7 +18,29 @@
 			{
 				this.Write(obj as string);
 			}
+		}		
 
+		public void WriteLineOutput(object obj)
+		{
+			if (obj is string)
+			{
+				this.WriteLine(obj as string);
+			}
+			else if (obj is IArea)
+			{
+				this.WriteLine((obj as Area).ToString());
+			}
+		}
+
+		public void Clear()
+		{
+			Console.Clear();
+		}
+
+		private void Write(string s)
+		{
+			this.Sb.Clear().Append(s);
+			Console.Write(this.Sb.ToString());
 		}
 
 		private void WriteLine(string s)
@@ -70,23 +86,6 @@
 					.AppendLine(temp[row]);
 			}
 			Console.WriteLine(this.Sb.ToString());
-		}
-
-		public void WriteLineOutput(object obj)
-		{
-			if (obj is string)
-			{
-				this.WriteLine(obj as string);
-			}
-			else if (obj is IArea)
-			{
-				this.WriteLine((obj as Area).ToString());
-			}
-		}
-
-		public void Clear()
-		{
-			Console.Clear();
 		}
 	}
 }

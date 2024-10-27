@@ -1,5 +1,6 @@
 ﻿namespace MinesweeperGamePlay.FieldsStructure
 {
+	using MinesweeperGamePlay.Common;
 	using MinesweeperGamePlay.Enums;
 	using MinesweeperGamePlay.FieldsStructure.Contracts;
 
@@ -9,7 +10,7 @@
 
 		public VisibleField(int x, int y, FieldSymbol val) : base(x, y, val)
 		{
-			this.IsVisible = false;
+			this.IsVisible = PublicConstants.Hidden;
 		}
 
 		public bool IsVisible
