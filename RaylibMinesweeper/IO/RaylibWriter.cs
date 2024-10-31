@@ -23,6 +23,12 @@
 
 			this.pictureImages.Add(FieldSymbol.One, new OnePicture());
 			this.pictureImages.Add(FieldSymbol.Two, new TwoPicture());
+			this.pictureImages.Add(FieldSymbol.Three, new ThreePicture());
+			this.pictureImages.Add(FieldSymbol.Four, new FourPicture());
+			this.pictureImages.Add(FieldSymbol.Five, new FivePicture());
+			this.pictureImages.Add(FieldSymbol.Six, new SixPicture());
+			this.pictureImages.Add(FieldSymbol.Seven, new SevenPicture());
+			this.pictureImages.Add(FieldSymbol.Eight, new EightPicture());
 			this.pictureImages.Add(FieldSymbol.Mine, new MinePicture());
 		}
 

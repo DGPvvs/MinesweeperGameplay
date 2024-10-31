@@ -207,7 +207,7 @@
 			}
 			else if (range <= 30 * 16)
 			{
-				return 70;
+				return 99;
 			}
 
 			return 130;
