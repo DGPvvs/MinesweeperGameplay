@@ -294,6 +294,76 @@
 			this[15, 25] = new Color(0, 0, 0, 255);
 			this[15, 26] = new Color(0, 0, 0, 255);
 			this[15, 27] = new Color(135, 135, 135, 255);
+			
+			this[16, 2] = new Color(88, 88, 88, 255);
+			this[16, 3] = new Color(88, 88, 88, 255);
+			this[16, 4] = new Color(7, 7, 7, 255);
+			this[16, 5] = new Color(0, 0, 0, 255);
+			this[16, 6] = new Color(0, 0, 0, 255);
+			this[16, 7] = new Color(0, 0, 0, 255);
+			this[16, 8] = new Color(0, 0, 0, 255);
+			this[16, 9] = new Color(8, 8, 8, 255);
+			this[16, 10] = new Color(27, 27, 27, 255);
+			this[16, 11] = new Color(31, 31, 31, 255);
+			this[16, 12] = new Color(0, 0, 0, 255);
+			this[16, 13] = new Color(0, 0, 0, 255);
+			this[16, 14] = new Color(28, 28, 28, 255);
+			this[16, 15] = new Color(4, 4, 4, 255);
+			this[16, 16] = new Color(0, 0, 0, 255);
+			this[16, 17] = new Color(24, 24, 24, 255);
+			this[16, 18] = new Color(31, 31, 31, 255);
+			this[16, 19] = new Color(10, 10, 10, 255);
+			this[16, 20] = new Color(0, 0, 0, 255);
+			this[16, 21] = new Color(0, 0, 0, 255);
+			this[16, 22] = new Color(0, 0, 0, 255);
+			this[16, 23] = new Color(0, 0, 0, 255);
+			this[16, 24] = new Color(0, 0, 0, 255);
+			this[16, 25] = new Color(81, 81, 81, 255);
+			this[16, 26] = new Color(88, 88, 88, 255);
+			
+			this[17, 4] = new Color(73, 73, 73, 255);
+			this[17, 5] = new Color(0, 0, 0, 255);
+			this[17, 6] = new Color(0, 0, 0, 255);
+			this[17, 7] = new Color(0, 0, 0, 255);
+			this[17, 8] = new Color(0, 0, 0, 255);
+			this[17, 9] = new Color(0, 0, 0, 255);
+			this[17, 10] = new Color(13, 13, 13, 255);
+			this[17, 11] = new Color(34, 34, 34, 255);
+			this[17, 12] = new Color(29, 29, 29, 255);
+			this[17, 13] = new Color(0, 0, 0, 255);
+			this[17, 14] = new Color(0, 0, 0, 255);
+			this[17, 15] = new Color(0, 0, 0, 255);
+			this[17, 16] = new Color(26, 26, 26, 255);
+			this[17, 17] = new Color(36, 36, 36, 255);
+			this[17, 18] = new Color(15, 15, 15, 255);
+			this[17, 19] = new Color(5, 5, 5, 255);
+			this[17, 20] = new Color(0, 0, 0, 255);
+			this[17, 21] = new Color(0, 0, 0, 255);
+			this[17, 22] = new Color(0, 0, 0, 255);
+			this[17, 23] = new Color(0, 0, 0, 255);
+			this[17, 24] = new Color(44, 44, 44, 255);
+			
+			this[18, 4] = new Color(138, 138, 138, 255);
+			this[18, 5] = new Color(0, 0, 0, 255);
+			this[18, 6] = new Color(0, 0, 0, 255);
+			this[18, 7] = new Color(0, 0, 0, 255);
+			this[18, 8] = new Color(0, 0, 0, 255);
+			this[18, 9] = new Color(1, 1, 1, 255);
+			this[18, 10] = new Color(6, 6, 6, 255);
+			this[18, 11] = new Color(14, 14, 14, 255);
+			this[18, 12] = new Color(14, 14, 14, 255);
+			this[18, 13] = new Color(34, 34, 34, 255);
+			this[18, 14] = new Color(32, 32, 32, 255);
+			this[18, 15] = new Color(33, 33, 33, 255);
+			this[18, 16] = new Color(31, 31, 31, 255);
+			this[18, 17] = new Color(17, 17, 17, 255);
+			this[18, 18] = new Color(6, 6, 6, 255);
+			this[18, 19] = new Color(2, 2, 2, 255);
+			this[18, 20] = new Color(0, 0, 0, 255);
+			this[18, 21] = new Color(0, 0, 0, 255);
+			this[18, 22] = new Color(0, 0, 0, 255);
+			this[18, 23] = new Color(0, 0, 0, 255);
+			this[18, 24] = new Color(109, 109, 109, 255);
 		}
 	}
 }

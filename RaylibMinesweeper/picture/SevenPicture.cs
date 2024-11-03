@@ -4,9 +4,9 @@
 
 	public class SevenPicture : BasePicture
 	{
-		public SevenPicture() : base(new Color(0, 255, 0, 255))
+		public SevenPicture() : base(new Color(0, 125, 33, 255))
 		{
-			Color sevenColor = new Color(0, 51, 153, 255);
+			Color sevenColor = new Color(0, 255, 255, 255);
 
 			for (int coll = 9;  coll <= 23; coll++)
 			{
