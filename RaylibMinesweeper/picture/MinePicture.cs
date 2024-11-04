@@ -364,6 +364,88 @@
 			this[18, 22] = new Color(0, 0, 0, 255);
 			this[18, 23] = new Color(0, 0, 0, 255);
 			this[18, 24] = new Color(109, 109, 109, 255);
+			
+			this[19, 5] = new Color(43, 43, 43, 255);
+			this[19, 6] = new Color(0, 0, 0, 255);
+			this[19, 7] = new Color(0, 0, 0, 255);
+			this[19, 8] = new Color(0, 0, 0, 255);
+			this[19, 9] = new Color(0, 0, 0, 255);
+			this[19, 10] = new Color(1, 1, 1, 255);
+			this[19, 11] = new Color(4, 4, 4, 255);
+			this[19, 12] = new Color(9, 9, 9, 255);
+			this[19, 13] = new Color(15, 15, 15, 255);
+			this[19, 14] = new Color(18, 18, 18, 255);
+			this[19, 15] = new Color(15, 15, 15, 255);
+			this[19, 16] = new Color(10, 10, 10, 255);
+			this[19, 17] = new Color(5, 5, 5, 255);
+			this[19, 18] = new Color(2, 2, 2, 255);
+			this[19, 19] = new Color(0, 0, 0, 255);
+			this[19, 20] = new Color(0, 0, 0, 255);
+			this[19, 21] = new Color(0, 0, 0, 255);
+			this[19, 22] = new Color(0, 0, 0, 255);
+			this[19, 23] = new Color(22, 22, 22, 255);
+			
+			this[20, 5] = new Color(103, 103, 103, 255);
+			this[20, 6] = new Color(0, 0, 0, 255);
+			this[20, 7] = new Color(0, 0, 0, 255);
+			this[20, 8] = new Color(0, 0, 0, 255);
+			this[20, 9] = new Color(0, 0, 0, 255);
+			this[20, 10] = new Color(0, 0, 0, 255);
+			this[20, 11] = new Color(1, 1, 1, 255);
+			this[20, 12] = new Color(1, 1, 1, 255);
+			this[20, 13] = new Color(2, 2, 2, 255);
+			this[20, 14] = new Color(3, 3, 3, 255);
+			this[20, 15] = new Color(3, 3, 3, 255);
+			this[20, 16] = new Color(2, 2, 2, 255);
+			this[20, 17] = new Color(1, 1, 1, 255);
+			this[20, 18] = new Color(0, 0, 0, 255);
+			this[20, 19] = new Color(0, 0, 0, 255);
+			this[20, 20] = new Color(0, 0, 0, 255);
+			this[20, 21] = new Color(0, 0, 0, 255);
+			this[20, 22] = new Color(0, 0, 0, 255);
+			this[20, 23] = new Color(66, 66, 66, 255);
+			
+			this[21, 4] = new Color(128, 128, 128, 255);
+			this[21, 5] = new Color(7, 7, 7, 255);
+			this[21, 24] = new Color(132, 132, 132, 255);
+
+			for (int coll = 6; coll <= 23; coll++)
+			{
+				this[21, coll] = new Color(0, 0, 0, 255);
+			}
+
+			this[22, 4] = new Color(77, 77, 77, 255);
+			this[22, 5] = new Color(0, 0, 0, 255);
+			this[22, 6] = new Color(45, 45, 45, 255);
+			this[22, 7] = new Color(4, 4, 4, 255);
+			this[22, 22] = new Color(40, 40, 40, 255);
+			this[22, 23] = new Color(0, 0, 0, 255);
+			this[22, 24] = new Color(56, 56, 56, 255);
+
+			for (int coll = 8; coll <= 21; coll++)
+			{
+				this[22, coll] = new Color(0, 0, 0, 255);
+			}
+
+			this[23, 5] = new Color(64, 64, 64, 255);
+			this[23, 6] = new Color(0, 0, 0, 255);
+			this[23, 7] = new Color(0, 0, 0, 255);
+			this[23, 8] = new Color(62, 62, 62, 255);
+			this[23, 9] = new Color(34, 34, 34, 255);
+			this[23, 10] = new Color(0, 0, 0, 255);
+			this[23, 11] = new Color(0, 0, 0, 255);
+			this[23, 12] = new Color(0, 0, 0, 255);
+			this[23, 13] = new Color(0, 0, 0, 255);
+			this[23, 14] = new Color(0, 0, 0, 255);
+			this[23, 15] = new Color(0, 0, 0, 255);
+			this[23, 16] = new Color(0, 0, 0, 255);
+			this[23, 17] = new Color(0, 0, 0, 255);
+			this[23, 18] = new Color(0, 0, 0, 255);
+			this[23, 19] = new Color(16, 16, 16, 255);
+			this[23, 20] = new Color(66, 66, 66, 255);
+			this[23, 21] = new Color(0, 0, 0, 255);
+			this[23, 22] = new Color(0, 0, 0, 255);
+			this[23, 23] = new Color(37, 37, 37, 255);
 		}
 	}
 }

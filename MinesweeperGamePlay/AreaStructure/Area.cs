@@ -210,7 +210,7 @@
 				return 99;
 			}
 
-			return 400;
+			return 150;
 		}
 
 		private GameStatus RevelationArea(int x, int y)
