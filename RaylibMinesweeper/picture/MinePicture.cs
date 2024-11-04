@@ -446,6 +446,36 @@
 			this[23, 21] = new Color(0, 0, 0, 255);
 			this[23, 22] = new Color(0, 0, 0, 255);
 			this[23, 23] = new Color(37, 37, 37, 255);
+			
+			this[24, 6] = new Color(72, 72, 72, 255);
+			this[24, 7] = new Color(85, 85, 85, 255);
+			this[24, 10] = new Color(128, 128, 128, 255);
+			this[24, 11] = new Color(62, 62, 62, 255);
+			this[24, 12] = new Color(11, 11, 11, 255);
+			this[24, 13] = new Color(0, 0, 0, 255);
+			this[24, 14] = new Color(0, 0, 0, 255);
+			this[24, 15] = new Color(0, 0, 0, 255);
+			this[24, 16] = new Color(5, 5, 5, 255);
+			this[24, 17] = new Color(54, 54, 54, 255);
+			this[24, 18] = new Color(118, 118, 118, 255);
+			this[24, 21] = new Color(111, 111, 111, 255);
+			this[24, 22] = new Color(62, 62, 62, 255);
+			
+			this[25, 12] = new Color(103, 103, 103, 255);
+			this[25, 13] = new Color(0, 0, 0, 255);
+			this[25, 14] = new Color(24, 24, 24, 255);
+			this[25, 15] = new Color(2, 2, 2, 255);
+			this[25, 16] = new Color(82, 82, 82, 255);
+			
+			this[26, 12] = new Color(101, 101, 101, 255);
+			this[26, 13] = new Color(0, 0, 0, 255);
+			this[26, 14] = new Color(20, 20, 20, 255);
+			this[26, 15] = new Color(0, 0, 0, 255);
+			this[26, 16] = new Color(78, 78, 78, 255);
+			
+			this[27, 13] = new Color(149, 149, 149, 255);
+			this[27, 14] = new Color(133, 133, 133, 255);
+			this[27, 15] = new Color(144, 144, 144, 255);
 		}
 	}
 }
