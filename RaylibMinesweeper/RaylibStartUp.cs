@@ -15,7 +15,7 @@
 			IWriter writer = new RaylibWriter();
 			IEngine engine = new RaylibEngine(writer as RaylibReader, writer);
 
-			IGame game = new Game(engine, 32, 35);
+			IGame game = new Game(engine, 9, 9);
 			game.Run();
 		}
 	}

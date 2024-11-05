@@ -15,6 +15,7 @@
 		private int minesCount;
 		private int tottalAreaCount;
 		private int currentVisibleFieldsCount;
+		private bool isFirst;
 
 		public Area(IField[,] fields)
 		{
@@ -27,7 +28,8 @@
 			this.fields = new IField[x, y];
 			this.SetDimensions();
 			this.minesCount = this.SetMineNum();
-			this.InitArea(this.minesCount);
+			this.isFirst = true;
+			this.SetAreaWithNoting();
 		}
 
 		public int MaxX => this.maxX;
@@ -62,9 +64,13 @@
 		{
 			GameStatus result = GameStatus.InProgress;
 
-			IField field = this[x, y];
+			if (this.isFirst)
+			{
+				this.InitArea(this[x, y], this.minesCount);
+				this.isFirst = false;
+			}
 
-			switch ((field as VisibleField).Value)
+			switch ((this[x, y] as VisibleField)!.Value)
 			{
 				case FieldSymbol.Mine:
 					result = GameStatus.Lose;
@@ -74,7 +80,7 @@
 					result = this.RevelationArea(x, y);
 					break;
 				default:
-					(field as VisibleField).SetVisible(PublicConstants.Visible);
+					(this[x, y] as VisibleField)!.SetVisible(PublicConstants.Visible);
 					result = this.IsWin();
 					break;
 			}
@@ -88,30 +94,29 @@
 			{
 				for (int j = 0; j < this.maxY; j++)
 				{
-					(this.fields[i, j] as VisibleField).SetVisible(true);
+					(this[i, j] as VisibleField)!.SetVisible(PublicConstants.Visible);
 				}
 			}
 		}
 
-		public void InitArea(int mineNum = 30)
+		public void InitArea(IField field, int mineNum = 30)
 		{
 			Random rnd = new Random();
 
-			this.SetAreaWithNoting();
-
 			HashSet<IField> set = new HashSet<IField>();
+			set.Add(field);
 
 			do
 			{
 				int x = rnd.Next(0, this.maxX);
 				int y = rnd.Next(0, this.maxY);
 
-				IField field = new VisibleField(x, y, FieldSymbol.Mine);
+				field = new VisibleField(x, y, FieldSymbol.Mine);
 
 				if (!set.Contains(field))
 				{
 					set.Add(field);
-					this.fields[x, y] = field;
+					this[x, y] = field;
 					mineNum--;
 				}
 			} while (mineNum > 0);
@@ -126,7 +131,7 @@
 				for (int j = 0; j < this.maxY; j++)
 				{
 					IField field = new VisibleField(i, j, FieldSymbol.Empty);
-					this.fields[i, j] = field;
+					this[i, j] = field;
 				}
 			}
 		}
@@ -140,7 +145,7 @@
 				sbRow.Clear().Append($"|");
 				for (int j = 0; j < this.maxY; j++)
 				{
-					sbRow.Append($"{(this.fields[i, j] as VisibleField)?.ToString()}|");
+					sbRow.Append($"{(this[i, j] as VisibleField)?.ToString()}|");
 				}
 
 				sb.AppendLine(sbRow.ToString());
@@ -155,17 +160,15 @@
 			{
 				for (int y = 0; y < this.maxY; y++)
 				{
-					VisibleField field = this.fields[x, y] as VisibleField;
-
 					int neighborMineCount = 0;
 
-					if (field?.Value == FieldSymbol.Empty)
+					if ((this[x, y] as ValueField)!.Value == FieldSymbol.Empty)
 					{
-						for (int xx = x - 1; xx <= x + 1; xx++)
+						for (int xx = Math.Max(x - 1, 0); xx <= Math.Min(x + 1, this.maxX - 1); xx++)
 						{
-							for (int yy = y - 1; yy <= y + 1; yy++)
+							for (int yy = Math.Max(y - 1, 0); yy <= Math.Min(y + 1, this.maxY - 1); yy++)
 							{
-								neighborMineCount += ((!this.IsInvalidIndexes(xx, yy)) && ((this.fields[xx, yy] as ValueField)?.Value == FieldSymbol.Mine))
+								neighborMineCount += ((this[xx, yy] as ValueField)?.Value == FieldSymbol.Mine)
 									? 1
 									: 0;
 							}
@@ -173,7 +176,7 @@
 
 						if (neighborMineCount > 0)
 						{
-							field.SetSymbol((FieldSymbol)(neighborMineCount + 48));
+							(this[x, y] as VisibleField)!.SetSymbol((FieldSymbol)(neighborMineCount + FieldSymbol.Zero));
 						}
 					}
 				}
@@ -210,35 +213,36 @@
 				return 99;
 			}
 
-			return 150;
+			return 130;
 		}
 
 		private GameStatus RevelationArea(int x, int y)
 		{
 			GameStatus result = GameStatus.InProgress;
 
-			Queue<IField> fields = new Queue<IField>();
-			IField field = this[x, y];
-			(field as VisibleField).SetVisible(PublicConstants.Visible);
-			fields.Enqueue(field);
+			Queue<IField> fieldsQueue = new Queue<IField>();
 
-			while (fields.Count > 0)
+			(this[x, y] as VisibleField)?.SetVisible(PublicConstants.Visible);
+
+			fieldsQueue.Enqueue(this[x, y]);
+
+			while (fieldsQueue.Count > 0)
 			{
-				field = fields.Dequeue();
+				IField field = fieldsQueue.Dequeue();
 				x = field.X;
 				y = field.Y;
 
-				for (int xx = x - 1; xx <= x + 1; xx++)
+				for (int xx = Math.Max(x - 1, 0); xx <= Math.Min(x + 1, this.maxX - 1); xx++)
 				{
-					for (int yy = y - 1; yy <= y + 1; yy++)
+					for (int yy = Math.Max(y - 1, 0); yy <= Math.Min(y + 1, this.maxY - 1); yy++)
 					{
-						if (!this.IsInvalidIndexes(xx, yy) && !(this[xx, yy] as VisibleField).IsVisible)
+						if (!(this[xx, yy] as VisibleField)!.IsVisible)
 						{
-							(this[xx, yy] as VisibleField).SetVisible(PublicConstants.Visible);
+							(this[xx, yy] as VisibleField)!.SetVisible(PublicConstants.Visible);
 
-							if ((this[xx, yy] as ValueField).Value == FieldSymbol.Empty)
+							if ((this[xx, yy] as ValueField)!.Value == FieldSymbol.Empty)
 							{
-								fields.Enqueue(this[xx, yy]);
+								fieldsQueue.Enqueue(this[xx, yy]);
 							}
 						}
 					}
@@ -273,9 +277,7 @@
 			{
 				for (int j = 0; j < this.maxY; j++)
 				{
-					IField field = this[i, j];
-
-					if ((field as VisibleField).IsVisible)
+					if ((this[i, j] as VisibleField)!.IsVisible)
 					{
 						count++;
 					}
