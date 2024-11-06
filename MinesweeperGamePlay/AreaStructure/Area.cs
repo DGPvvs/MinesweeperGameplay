@@ -5,6 +5,7 @@
 	using MinesweeperGamePlay.Enums;
 	using MinesweeperGamePlay.FieldsStructure;
 	using MinesweeperGamePlay.FieldsStructure.Contracts;
+	using MinesweeperGamePlay.TransferObject.Contracts;
 	using System.Text;
 
 	public class Area : IArea
@@ -60,29 +61,43 @@
 			}
 		}
 
-		public GameStatus StateOfArea(int x, int y)
+		public GameStatus StateOfArea(ITransfer transfer)
 		{
 			GameStatus result = GameStatus.InProgress;
 
-			if (this.isFirst)
-			{
-				this.InitArea(this[x, y], this.minesCount);
-				this.isFirst = false;
-			}
+			int x = transfer.XPosition;
+			int y = transfer.YPosition;
+			FieldSymbol action = transfer.Action;
 
-			switch ((this[x, y] as VisibleField)!.Value)
+			if (action == FieldSymbol.Mark)
 			{
-				case FieldSymbol.Mine:
-					result = GameStatus.Lose;
-					this.SetAllVisible();
-					break;
-				case FieldSymbol.Empty:
-					result = this.RevelationArea(x, y);
-					break;
-				default:
-					(this[x, y] as VisibleField)!.SetVisible(PublicConstants.Visible);
-					result = this.IsWin();
-					break;
+				(this[x, y] as MarkedField)!.ToggleMark();
+			}
+			else
+			{
+				if (this.isFirst)
+				{
+					//this.InitArea(new VisibleField(x, y, FieldSymbol.Empty), this.minesCount);
+					this.InitArea(this[x, y], this.minesCount);
+					this.isFirst = false;
+				}
+
+				//IField field = this[x, y];
+
+				switch ((this[x, y] as VisibleField)!.Value)
+				{
+					case FieldSymbol.Mine:
+						result = GameStatus.Lose;
+						this.SetAllVisible();
+						break;
+					case FieldSymbol.Empty:
+						result = this.RevelationArea(x, y);
+						break;
+					default:
+						(this[x, y] as VisibleField)!.SetVisible(PublicConstants.Visible);
+						result = this.IsWin();
+						break;
+				}
 			}
 
 			return result;

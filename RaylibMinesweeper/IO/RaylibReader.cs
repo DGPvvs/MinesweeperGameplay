@@ -1,8 +1,10 @@
 ﻿namespace RaylibMinesweeper.IO
 {
+	using MinesweeperGamePlay.Enums;
 	using MinesweeperGamePlay.IO.Contracts;
+	using MinesweeperGamePlay.TransferObject;
+	using MinesweeperGamePlay.TransferObject.Contracts;
 	using Raylib_cs;
-	using RaylibMinesweeper.Common;
 	using System.Numerics;
 
 	using static Raylib_cs.Raylib;
@@ -14,23 +16,28 @@
 
 		}
 
-		public object ReadInput() => this.ReadLine() as object;
+		public ITransfer ReadInput() => this.ReadLine();
 
 		public void Free()
 		{
 			
 		}
 
-		private string ReadLine()
+		private ITransfer ReadLine()
 		{
 			Vector2 position = GetMousePosition();
 
 			if (IsMouseButtonPressed(MouseButton.Left))
 			{
-				return $"{position.Y},{position.X}";
+				return new Transfer((int)position.Y, (int)position.X, FieldSymbol.Open);
 			}
 
-			return PublicConstant.NOT_PRESS;
+			if (IsMouseButtonPressed(MouseButton.Right))
+			{
+				return new Transfer((int)position.Y, (int)position.X, FieldSymbol.Mark);
+			}
+
+			return new Transfer(-1, -1, FieldSymbol.Noting);
 		}
 	}
 }

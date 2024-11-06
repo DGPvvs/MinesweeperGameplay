@@ -24,6 +24,6 @@
 			this.IsVisible = visible;
 		}
 
-		public override string ToString() => this.IsVisible ? base.ToString() : ((char)FieldSymbol.Hide).ToString();
+		public override string ToString() => this.IsVisible ? base.ToString() : (this.IsMarked) ? ((char)FieldSymbol.Mark).ToString() : ((char)FieldSymbol.Hide).ToString();
 	}
 }

@@ -2,6 +2,7 @@
 {
 	using MinesweeperGamePlay.Enums;
 	using MinesweeperGamePlay.FieldsStructure.Contracts;
+	using MinesweeperGamePlay.TransferObject.Contracts;
 
 	public interface IArea
 	{
@@ -10,6 +11,6 @@
 		public IField this[int x, int y] { get; }
 		void InitArea(IField field, int percent);
 		public void SetAllVisible();
-		public GameStatus StateOfArea(int x, int y);
+		GameStatus StateOfArea(ITransfer transfer);
 	}
 }

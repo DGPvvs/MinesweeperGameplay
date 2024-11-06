@@ -5,6 +5,7 @@
 	using MinesweeperGamePlay.Enums;
 	using MinesweeperGamePlay.GameEngine.Contracts;
 	using MinesweeperGamePlay.IO.Contracts;
+	using MinesweeperGamePlay.TransferObject.Contracts;
 
 	public class ConsoleEngine : IEngine
 	{
@@ -51,34 +52,25 @@
 		private GameStatus GameLoop(IArea area)
 		{
 			GameStatus result = GameStatus.InProgress;
+
 			this.writer.WriteLineOutput(area);
 
 			do
 			{
-				this.writer.WriteOutput("Въведете позиция във формат X,Y: ");
-				string answer = this.reader.ReadInput() as string;
+				ITransfer? answer = null;
 
-				int x = 0;
-				int y = 0;
-				string[] coordinates = answer.Split(',');
-				bool isCorrect = int.TryParse(coordinates[0], out x) && int.TryParse(coordinates[1], out y);
-				x--;
-				y--;
-
-				if (isCorrect)
+				do
 				{
-					result = area.StateOfArea(x, y);
+					this.writer.WriteOutput("Въведете позиция във формат X,Y,O_pen/M_ark: ");
+					answer = this.reader.ReadInput();
+				} while (answer.Action == FieldSymbol.Noting);
 
-					if (result == GameStatus.InProgress)
-					{
-						this.writer.Clear();
-						this.writer.WriteLineOutput(area);
-					}
-				}
+				result = area.StateOfArea(answer);
 
-				if (answer == "Wrong")
+				if (result == GameStatus.InProgress)
 				{
-					result = GameStatus.Lose;
+					this.writer.Clear();
+					this.writer.WriteLineOutput(area);
 				}
 
 			} while (result == GameStatus.InProgress);

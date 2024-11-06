@@ -14,7 +14,8 @@
 
 	public class RaylibWriter : RaylibReader, IWriter
 	{
-		private Dictionary<FieldSymbol, BasePicture> pictureImages;
+		private readonly Dictionary<FieldSymbol, BasePicture> pictureImages;
+		private readonly BasePicture mark; 
 
 		public RaylibWriter() : base()
 		{
@@ -30,6 +31,7 @@
 			this.pictureImages.Add(FieldSymbol.Seven, new SevenPicture());
 			this.pictureImages.Add(FieldSymbol.Eight, new EightPicture());
 			this.pictureImages.Add(FieldSymbol.Mine, new MinePicture());
+			this.mark = new MarkPicture();
 		}
 
 		public void WriteOutput(object obj)
@@ -68,11 +70,18 @@
 				{
 					if (!(area[row, coll] as VisibleField).IsVisible)
 					{
-						DrawRectangle(coll * PublicConstant.CELL_SIZE,
+						if ((area[row, coll] as MarkedField)!.IsMarked)
+						{
+							this.mark.Draw(row, coll);
+						}
+						else
+						{
+							DrawRectangle(coll * PublicConstant.CELL_SIZE,
 								  row * PublicConstant.CELL_SIZE,
 								  PublicConstant.CELL_SIZE - 1,
 								  PublicConstant.CELL_SIZE - 1,
 								  Color.DarkBlue);
+						}
 					}
 					else
 					{

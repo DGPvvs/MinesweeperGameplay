@@ -1,8 +1,10 @@
 ﻿namespace MinesweeperGamePlay.IO.Contracts
 {
+	using MinesweeperGamePlay.TransferObject.Contracts;
+
 	public interface IReader
 	{
-		public object ReadInput();
+		public ITransfer ReadInput();
 		public void Free();
 	}
 }

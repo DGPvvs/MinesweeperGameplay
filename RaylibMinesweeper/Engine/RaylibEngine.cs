@@ -5,7 +5,8 @@
 	using MinesweeperGamePlay.Enums;
 	using MinesweeperGamePlay.GameEngine.Contracts;
 	using MinesweeperGamePlay.IO.Contracts;
-
+	using MinesweeperGamePlay.TransferObject;
+	using MinesweeperGamePlay.TransferObject.Contracts;
 	using static Raylib_cs.Raylib;
 	using static RaylibMinesweeper.Common.PublicConstant;
 
@@ -55,24 +56,26 @@
 
 			while (!WindowShouldClose())
 			{
-				string answer = this.reader.ReadInput() as string;
-				string[] coordinates = answer.Split(',');
+				ITransfer answer = this.reader.ReadInput();
 
-				int x = int.Parse(coordinates[0]);
-				int y = int.Parse(coordinates[1]);
-
-				if (x >= 0 && y >= 0)
+				if (answer.Action != FieldSymbol.Noting)
 				{
-					int row = x / (CELL_SIZE);
-					int coll = y / (CELL_SIZE);
+					int x = answer.XPosition;
+					int y = answer.YPosition;
 
-					gameStatus = area.StateOfArea(row, coll);
-				}
+					if (x >= 0 && y >= 0)
+					{
+						int row = x / (CELL_SIZE);
+						int coll = y / (CELL_SIZE);
 
-				if (gameStatus != GameStatus.InProgress)
-				{
-					area.SetAllVisible();
-				}
+						gameStatus = area.StateOfArea(new Transfer(row, coll, answer.Action));
+					}
+
+					if (gameStatus != GameStatus.InProgress)
+					{
+						area.SetAllVisible();
+					}
+				}				
 
 				BeginDrawing();
 				this.writer.Clear();

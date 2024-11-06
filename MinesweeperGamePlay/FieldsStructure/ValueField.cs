@@ -3,7 +3,7 @@
 	using MinesweeperGamePlay.Enums;
 	using MinesweeperGamePlay.FieldsStructure.Contracts;
 
-	public class ValueField : Field, IValueField
+	public class ValueField : MarkedField, IValueField
 	{
 		private FieldSymbol val;
 
