@@ -15,10 +15,14 @@
 	{
 		private IReader reader;
 		private IWriter writer;
+		private IArea area;
+		private GameStatus status;
 
 		public RaylibEngine(IReader read, IWriter write)
 		{
 			this.Init(read, write);
+			this.area = null;
+			this.status = GameStatus.Started;
 		}
 
 		public void Init(IReader read, IWriter write)
@@ -27,7 +31,12 @@
 			this.writer = write;
 		}
 
-		public void Loop(object obj)
+		public void InitArea(int x, int y)
+		{
+			this.area = new Area(x, y);
+		}
+
+		public void Loop()
 		{
 			IArea area = null;
 

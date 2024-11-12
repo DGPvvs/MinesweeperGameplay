@@ -4,8 +4,7 @@
 
 	public interface IGame
 	{
-		public void Init(IEngine engine);
-		public void InitArea(int x, int y);
-		public void Run();
+		void Init(IEngine engine);
+		void Run();
 	}
 }

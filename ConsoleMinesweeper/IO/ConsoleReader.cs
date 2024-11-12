@@ -58,6 +58,20 @@
 				transfer = new Transfer(x, y, (ch == (char)FieldSymbol.Mark) ? FieldSymbol.Mark : FieldSymbol.Open);
 			}
 
+			isCorrect = false;
+
+			if (coordinates.Length == 1)
+			{
+				isCorrect = true;
+				isCorrect = isCorrect && int.TryParse(coordinates[0], out x);
+				isCorrect = isCorrect && x > 0 && x < 5;
+			}
+
+			if (isCorrect)
+			{
+				transfer = new Transfer(x, y, FieldSymbol.Noting);
+			}
+
 			return transfer;
 		}
 

@@ -11,10 +11,14 @@
 	{
 		private IReader reader;
 		private IWriter writer;
+		private IArea area;
+		private GameStatus status;
 
 		public ConsoleEngine(IReader read, IWriter write)
 		{
 			this.Init(read, write);
+			this.area = null;
+			this.status = GameStatus.Started;
 		}
 
 		public void Init(IReader read, IWriter write)
@@ -23,30 +27,72 @@
 			this.writer = write;
 		}
 
-		public void Loop(object obj)
+		public void InitArea(int x, int y)
 		{
-			IArea area = null;
+			this.area = new Area(x, y);
+		}
 
-			if (obj is Area)
+		public void Loop()
+		{
+			do
 			{
-				area = obj as Area;
-			}
-
-			if (area != null)
-			{
-				GameStatus status = this.GameLoop(area);
-				area.SetAllVisible();
-				this.writer.WriteLineOutput(area);
-
-				if (status == GameStatus.Win)
+				if (this.status == GameStatus.Started)
 				{
-					this.writer.WriteLineOutput("WIN");
+					ITransfer answer = null;
+
+					do
+					{
+						this.writer.Clear();
+						this.writer.WriteLineOutput("Изберете игра:");
+						this.writer.WriteLineOutput("1: 9 х 9");
+						this.writer.WriteLineOutput("2: 16 х 16");
+						this.writer.WriteLineOutput("3: 30 х 16");
+						this.writer.WriteLineOutput("4: Край");
+						answer = this.reader.ReadInput();
+
+						int chois = answer.XPosition;
+
+						switch (chois)
+						{
+							case 1:
+								this.InitArea(9, 9);
+								this.status = GameStatus.InProgress;
+								break;
+							case 2:
+								this.InitArea(16, 16);
+								this.status = GameStatus.InProgress;
+								break;
+							case 3:
+								this.InitArea(16, 30);
+								this.status = GameStatus.InProgress;
+								break;
+							default:
+								this.status = GameStatus.Exit;
+								break;
+						}
+					} while (this.status == GameStatus.Started);
 				}
-				else
+
+				if (this.status != GameStatus.Exit)
 				{
-					this.writer.WriteLineOutput("LOSE");
+					this.status = this.GameLoop(this.area);
+					area.SetAllVisible();
+					this.writer.WriteLineOutput(this.area);
+
+					if (this.status == GameStatus.Win)
+					{
+						this.writer.WriteLineOutput("WIN");
+					}
+					else
+					{
+						this.writer.WriteLineOutput("LOSE");
+					}
+
+					this.status = GameStatus.Started;
+					this.reader.ReadInput();
 				}
-			}
+
+			} while (this.status != GameStatus.Exit);
 		}
 
 		private GameStatus GameLoop(IArea area)

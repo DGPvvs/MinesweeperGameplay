@@ -4,6 +4,8 @@
 	{
 		Win = 1,
 		Lose,
+		Started,
+		Exit,
 		InProgress
 	}
 }

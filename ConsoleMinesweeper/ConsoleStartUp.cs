@@ -14,7 +14,7 @@
 			IWriter writer = new ConsoleWriter();
 			IEngine engine = new ConsoleEngine(writer as ConsoleReader, writer);
 
-			IGame game = new Game(engine, 9, 9);
+			IGame game = new Game(engine);
 
 			game.Run();
 		}	

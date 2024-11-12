@@ -223,7 +223,7 @@
 			{
 				return 40;
 			}
-			else if (range <= 30 * 16)
+			else if (range <= 16 * 30)
 			{
 				return 99;
 			}
