@@ -6,6 +6,7 @@
 	using MinesweeperGamePlay.FieldsStructure;
 	using MinesweeperGamePlay.FieldsStructure.Contracts;
 	using MinesweeperGamePlay.IO.Contracts;
+	using MinesweeperGamePlay.TransferObject.Contracts;
 	using Raylib_cs;
 	using RaylibMinesweeper.Common;
 	using RaylibMinesweeper.picture;
@@ -15,7 +16,8 @@
 	public class RaylibWriter : RaylibReader, IWriter
 	{
 		private readonly Dictionary<FieldSymbol, BasePicture> pictureImages;
-		private readonly BasePicture mark; 
+		private readonly BasePicture mark;
+		private readonly BasePicture start;
 
 		public RaylibWriter() : base()
 		{
@@ -32,22 +34,23 @@
 			this.pictureImages.Add(FieldSymbol.Eight, new EightPicture());
 			this.pictureImages.Add(FieldSymbol.Mine, new MinePicture());
 			this.mark = new MarkPicture();
+			this.start = new StartPicture();
 		}
 
-		public void WriteOutput(object obj)
+		public void WriteOutput(IWriteTransferObject wTO)
 		{
 			return;
 		}
 
-		public void WriteLineOutput(object obj)
+		public void WriteLineOutput(IWriteTransferObject wTO)
 		{
-			if (obj is string)
+			if (wTO.Status == GameStatus.Started)
 			{
-				this.WriteLine(obj as string);
+				this.start.Draw(-1, -1);
 			}
-			else if (obj is IArea)
+			else if (wTO.Status == GameStatus.InProgress)
 			{
-				this.WriteLine(obj as Area);
+				this.WriteLine(wTO.Area);
 			}
 		}
 
@@ -98,39 +101,6 @@
 			{
 				this.pictureImages[key].Draw(field.X, field.Y);
 			}
-
-			//switch ()
-			//{
-			//	case FieldSymbol.Noting:
-			//		break;
-			//	case FieldSymbol.Empty:
-			//		break;
-			//	case FieldSymbol.Zero:
-			//		break;
-			//	case FieldSymbol.One:
-			//		break;
-			//	case FieldSymbol.Two:
-			//		break;
-			//	case FieldSymbol.Three:
-			//		break;
-			//	case FieldSymbol.Four:
-			//		break;
-			//	case FieldSymbol.Five:
-			//		break;
-			//	case FieldSymbol.Six:
-			//		break;
-			//	case FieldSymbol.Seven:
-			//		break;
-			//	case FieldSymbol.Eight:
-			//		break;
-			//	case FieldSymbol.Hide:
-			//		break;
-			//	case FieldSymbol.Mine:
-			//		break;
-			//	default:
-			//		break;
-			//}
-			//throw new NotImplementedException();
 		}
 	}
 }

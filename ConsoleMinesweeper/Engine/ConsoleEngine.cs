@@ -6,6 +6,7 @@
 	using MinesweeperGamePlay.GameEngine.Contracts;
 	using MinesweeperGamePlay.IO.Contracts;
 	using MinesweeperGamePlay.TransferObject.Contracts;
+	using MinesweeperGamePlay.TransferObject;
 
 	public class ConsoleEngine : IEngine
 	{
@@ -43,11 +44,11 @@
 					do
 					{
 						this.writer.Clear();
-						this.writer.WriteLineOutput("Изберете игра:");
-						this.writer.WriteLineOutput("1: 9 х 9");
-						this.writer.WriteLineOutput("2: 16 х 16");
-						this.writer.WriteLineOutput("3: 30 х 16");
-						this.writer.WriteLineOutput("4: Край");
+						this.writer.WriteLineOutput(new WriteTransferObject(GameStatus.Started, null, "Изберете игра:"));
+						this.writer.WriteLineOutput(new WriteTransferObject(GameStatus.Started, null, "1: 9 х 9"));
+						this.writer.WriteLineOutput(new WriteTransferObject(GameStatus.Started, null, "2: 16 х 16"));
+						this.writer.WriteLineOutput(new WriteTransferObject(GameStatus.Started, null, "3: 30 х 16"));
+						this.writer.WriteLineOutput(new WriteTransferObject(GameStatus.Started, null, "4: Край"));
 						answer = this.reader.ReadInput();
 
 						int chois = answer.XPosition;
@@ -75,17 +76,17 @@
 
 				if (this.status != GameStatus.Exit)
 				{
-					this.status = this.GameLoop(this.area);
-					area.SetAllVisible();
-					this.writer.WriteLineOutput(this.area);
+					this.status = this.GameLoop();
+					this.area.SetAllVisible();
+					this.writer.WriteLineOutput(new WriteTransferObject(this.status, this.area, string.Empty));
 
 					if (this.status == GameStatus.Win)
 					{
-						this.writer.WriteLineOutput("WIN");
+						this.writer.WriteLineOutput(new WriteTransferObject(GameStatus.Started, null, "WIN"));
 					}
 					else
 					{
-						this.writer.WriteLineOutput("LOSE");
+						this.writer.WriteLineOutput(new WriteTransferObject(GameStatus.Started, null, "LOSE"));
 					}
 
 					this.status = GameStatus.Started;
@@ -95,19 +96,19 @@
 			} while (this.status != GameStatus.Exit);
 		}
 
-		private GameStatus GameLoop(IArea area)
+		private GameStatus GameLoop()
 		{
 			GameStatus result = GameStatus.InProgress;
 
-			this.writer.WriteLineOutput(area);
+			this.writer.WriteLineOutput(new WriteTransferObject(result, this.area, string.Empty));
 
 			do
 			{
-				ITransfer? answer = null;
+				ITransfer answer = null;
 
 				do
 				{
-					this.writer.WriteOutput("Въведете позиция във формат X,Y,O_pen/M_ark: ");
+					this.writer.WriteOutput(new WriteTransferObject(GameStatus.Started, null, "Въведете позиция във формат X,Y,O_pen/M_ark: "));
 					answer = this.reader.ReadInput();
 				} while (answer.Action == FieldSymbol.Noting);
 
@@ -116,7 +117,7 @@
 				if (result == GameStatus.InProgress)
 				{
 					this.writer.Clear();
-					this.writer.WriteLineOutput(area);
+					this.writer.WriteLineOutput(new WriteTransferObject(result, this.area, string.Empty));
 				}
 
 			} while (result == GameStatus.InProgress);

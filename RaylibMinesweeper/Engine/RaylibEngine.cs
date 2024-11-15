@@ -7,6 +7,8 @@
 	using MinesweeperGamePlay.IO.Contracts;
 	using MinesweeperGamePlay.TransferObject;
 	using MinesweeperGamePlay.TransferObject.Contracts;
+	using RaylibMinesweeper.Common;
+	using RaylibMinesweeper.Enums;
 	using static Raylib_cs.Raylib;
 	using static RaylibMinesweeper.Common.PublicConstant;
 
@@ -38,33 +40,31 @@
 
 		public void Loop()
 		{
-			IArea area = null;
+			InitWindow(PublicConstant.START_WIDTH, PublicConstant.START_HEIGHT, PublicConstant.STARTED_TITLE);
+			SetTargetFPS(TARGET_FPS);
 
-			if (obj is Area)
-			{
-				area = obj as Area;
-			}
+			this.GameLoop();
 
-			if (area != null)
-			{
-				int width = area.MaxY;
-				int height = area.MaxX;
-
-				InitWindow(width * (CELL_SIZE), height * (CELL_SIZE), "");
-				SetTargetFPS(TARGET_FPS);
-
-				this.GameLoop(area);
-
-				CloseWindow();
-			}
+			CloseWindow();
 		}
 
-		private void GameLoop(IArea area)
+		private void GameLoop()
 		{
 			GameStatus gameStatus = GameStatus.InProgress;
+			IWriteTransferObject wTO = null;
 
 			while (!WindowShouldClose())
 			{
+				if (this.status == GameStatus.Started)
+				{
+					wTO = new WriteTransferObject(GameStatus.Started, null, PublicConstant.STARTED_TITLE);
+				}
+
+				BeginDrawing();
+				this.writer.Clear();
+				this.writer.WriteLineOutput(wTO);
+				EndDrawing();
+
 				ITransfer answer = this.reader.ReadInput();
 
 				if (answer.Action != FieldSymbol.Noting)
@@ -74,23 +74,86 @@
 
 					if (x >= 0 && y >= 0)
 					{
-						int row = x / (CELL_SIZE);
-						int coll = y / (CELL_SIZE);
+						if (this.status == GameStatus.InProgress)
+						{
+							int row = x / (CELL_SIZE);
+							int coll = y / (CELL_SIZE);
 
-						gameStatus = area.StateOfArea(new Transfer(row, coll, answer.Action));
-					}
+							this.status = area.StateOfArea(new Transfer(row, coll, answer.Action));
+							if (this.status != GameStatus.InProgress)
+							{
+								area.SetAllVisible();
+							}
+						}
 
-					if (gameStatus != GameStatus.InProgress)
-					{
-						area.SetAllVisible();
-					}
-				}				
+						if (this.status == GameStatus.Started)
+						{
+							SetWindowSize(PublicConstant.START_WIDTH, PublicConstant.START_HEIGHT);
+							SetWindowTitle(PublicConstant.STARTED_TITLE);
 
-				BeginDrawing();
-				this.writer.Clear();
-				this.writer.WriteLineOutput(area);
-				EndDrawing();
+							RangeEnum range = this.IsChoisButton(x, y, RangeEnum.None);
+
+							if (range != RangeEnum.None)
+							{
+								this.status = GameStatus.InProgress;
+
+								switch (range)
+								{
+									case RangeEnum.Range9X9:
+										this.InitArea(9, 9);
+										SetWindowTitle(PublicConstant.TITLE_9X9);
+										break;
+									case RangeEnum.Range16X16:
+										this.InitArea(16, 16);
+										SetWindowTitle(PublicConstant.TITLE_16X16);
+										break;
+									case RangeEnum.Range30X16:
+										this.InitArea(16, 30);
+										SetWindowTitle(PublicConstant.TITLE_30X16);
+										break;
+									default:
+										break;
+								}
+
+								int width = area.MaxY;
+								int height = area.MaxX;
+
+								SetWindowSize(width * (CELL_SIZE), height * (CELL_SIZE));
+								wTO = new WriteTransferObject(GameStatus.InProgress, this.area, PublicConstant.STARTED_TITLE);
+							}							
+						}										
+					}					
+				}
 			}
+		}
+
+		private RangeEnum IsChoisButton(int x, int y, RangeEnum range)
+		{
+			if (!this.IsButtonPush(x, y))
+			{
+				return range;
+			}
+
+			if (y >= PublicConstant.BUTTON_9X9_WIDTH_START && y <= PublicConstant.BUTTON_9X9_WIDTH_END)
+			{
+				return RangeEnum.Range9X9;
+			}
+			else if (y >= PublicConstant.BUTTON_16X16_WIDTH_START && y <= PublicConstant.BUTTON_16X16_WIDTH_END)
+			{
+				return RangeEnum.Range16X16;
+			}
+
+			return RangeEnum.Range30X16;
+		}
+
+		private bool IsButtonPush(int x, int y)
+		{
+			bool isButtonHeight = x >= PublicConstant.BUTTON_HEIGHT_START && x <= PublicConstant.BUTTON_HEIGHT_END;
+
+			return isButtonHeight
+					&& ((y >= PublicConstant.BUTTON_9X9_WIDTH_START && y <= PublicConstant.BUTTON_9X9_WIDTH_END) 
+					|| (y >= PublicConstant.BUTTON_16X16_WIDTH_START && y <= PublicConstant.BUTTON_16X16_WIDTH_END)
+					|| (y >= PublicConstant.BUTTON_30X16_WIDTH_START && y <= PublicConstant.BUTTON_30X16_WIDTH_END));
 		}
 	}
 }

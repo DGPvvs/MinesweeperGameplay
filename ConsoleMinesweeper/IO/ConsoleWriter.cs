@@ -1,8 +1,8 @@
 ﻿namespace ConsoleMinesweeper.IO
 {
-	using MinesweeperGamePlay.AreaStructure.Contracts;
-	using MinesweeperGamePlay.AreaStructure;
+	using MinesweeperGamePlay.Enums;
 	using MinesweeperGamePlay.IO.Contracts;
+	using MinesweeperGamePlay.TransferObject.Contracts;
 	using System.Text;
 
 	public class ConsoleWriter : ConsoleReader, IWriter
@@ -10,25 +10,25 @@
 		public ConsoleWriter() : base()
 		{
 
-		}		
+		}
 
-		public void WriteOutput(object obj)
+		public void WriteOutput(IWriteTransferObject obj)
 		{
-			if (obj is string)
+			if (obj.Status == GameStatus.Started)
 			{
-				this.Write(obj as string);
+				this.Write(obj.Text);
 			}
-		}		
+		}
 
-		public void WriteLineOutput(object obj)
+		public void WriteLineOutput(IWriteTransferObject obj)
 		{
-			if (obj is string)
+			if (obj.Status == GameStatus.Started)
 			{
-				this.WriteLine(obj as string);
+				this.WriteLine(obj.Text);
 			}
-			else if (obj is IArea)
+			else
 			{
-				this.WriteLine((obj as Area).ToString());
+				this.WriteLine(obj.Area.ToString());
 			}
 		}
 

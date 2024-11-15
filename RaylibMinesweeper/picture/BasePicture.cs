@@ -8,18 +8,26 @@
 	{
 		protected Color[,] picture;
 
-        public BasePicture(Color baseColor)
+        public BasePicture(int hight, int weight )
         {
-            this.picture = new Color[PublicConstant.CELL_SIZE - 1, PublicConstant.CELL_SIZE - 1];
+			this.picture = new Color[hight, weight];
+		}
 
-            for (int row = 0; row < this.picture.GetLength(0); row++)
-            {
-                for (int col = 0; col < this.picture.GetLength(1); col++)
-                {
-                    this.picture[row, col] = baseColor;
-                }
-            }
+        public BasePicture(Color baseColor) : this(PublicConstant.CELL_SIZE - 1, PublicConstant.CELL_SIZE - 1)
+        {
+            this.SetBaseColor(baseColor);            
         }
+
+        public void SetBaseColor(Color baseColor)
+        {
+			for (int row = 0; row < this.picture.GetLength(0); row++)
+			{
+				for (int col = 0; col < this.picture.GetLength(1); col++)
+				{
+					this.picture[row, col] = baseColor;
+				}
+			}
+		}
 
         public Color[,] Picture
         {
@@ -34,7 +42,7 @@
             }
         }
 
-        public void Draw(int x, int y)
+        public virtual void Draw(int x, int y)
         {
             for(int row = 0;row < this.picture.GetLength(0);row++)
             {
