@@ -46,7 +46,7 @@
 		{
 			if (wTO.Status == GameStatus.Started)
 			{
-				this.start.Draw(-1, -1);
+				this.start.Draw(0, 0);
 			}
 			else if (wTO.Status == GameStatus.InProgress)
 			{

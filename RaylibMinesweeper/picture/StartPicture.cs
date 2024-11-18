@@ -239,17 +239,207 @@
 			
 			this.picture_x[8, 48] = Color.Black;
 			this.picture_x[9, 48] = Color.Black;
-		}
 
-		public override void Draw(int x, int y)
-		{
-			for (int row = 0; row < this.picture.GetLength(0); row++)
+			for (int r = 11; r <= 15; r++)
 			{
-				for (int col = 0; col < this.picture.GetLength(1); col++)
+				for (int c = 40; c <= 43; c++)
 				{
-					DrawRectangle(col, row, 1, 1, this.picture[row, col]);
+					this.picture_x[r, c] = Color.Black;
 				}
 			}
+
+			for (int r = 11; r <= 13; r++)
+			{
+				this.picture_x[r, 44] = Color.Black;
+				this.picture_x[r, 45] = Color.Black;
+			}
+
+			for (int r = 16; r <= 18; r++)
+			{
+				this.picture_x[r, 40] = Color.Black;
+				this.picture_x[r, 41] = Color.Black;
+			}
+
+			this.picture_x[11, 46] = Color.Black;
+			
+			this.picture_x[14, 44] = Color.Black;
+			
+			this.picture_x[16, 42] = Color.Black;
+			this.picture_x[16, 43] = Color.Black;
+			
+			this.picture_x[17, 42] = Color.Black;
+			
+			this.picture_x[19, 40] = Color.Black;
+			this.picture_x[20, 40] = Color.Black;
+
+			for (int r = 40; r <= 43; r++)
+			{
+				for (int c = 2; c <= 18; c++)
+				{
+					this.picture_x[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_x[43, 0] = Color.Black;
+			this.picture_x[43, 1] = Color.Black;
+			
+			this.picture_x[41, 1] = Color.Black;
+			this.picture_x[42, 1] = Color.Black;
+			
+			this.picture_x[40, 19] = Color.Black;
+			this.picture_x[41, 19] = Color.Black;
+			this.picture_x[42, 19] = Color.Black;
+			
+			this.picture_x[40, 20] = Color.Black;
+			this.picture_x[41, 20] = Color.Black;
+
+			for (int r = 31; r <= 35; r++)
+			{
+				for (int c = 22; c <= 24; c++)
+				{
+					this.picture_x[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_x[31, 25] = Color.Black;
+			this.picture_x[32, 25] = Color.Black;
+			this.picture_x[33, 25] = Color.Black;
+			
+			this.picture_x[31, 26] = Color.Black;
+			this.picture_x[32, 26] = Color.Black;
+			
+			this.picture_x[36, 22] = Color.Black;
+			this.picture_x[37, 22] = Color.Black;
+			this.picture_x[38, 22] = Color.Black;
+			
+			this.picture_x[36, 23] = Color.Black;
+
+			for (int r = 32; r <= 39; r++)
+			{
+				for (int c = 7; c <= 14; c++)
+				{
+					this.picture_x[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 28; r <= 31; r++)
+			{
+				for (int c = 10; c <= 14; c++)
+				{
+					this.picture_x[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 25; r <= 27; r++)
+			{
+				for (int c = 12; c <= 14; c++)
+				{
+					this.picture_x[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 37; r <= 39; r++)
+			{
+				for (int c = 4; c <= 6; c++)
+				{
+					this.picture_x[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_x[22, 14] = Color.Black;
+			this.picture_x[23, 14] = Color.Black;
+			this.picture_x[24, 14] = Color.Black;
+			
+			this.picture_x[24, 13] = Color.Black;
+			
+			this.picture_x[27, 11] = Color.Black;
+			
+			this.picture_x[29, 9] = Color.Black;
+			this.picture_x[30, 9] = Color.Black;
+			this.picture_x[31, 9] = Color.Black;
+			
+			this.picture_x[31, 8] = Color.Black;
+			
+			this.picture_x[34, 6] = Color.Black;
+			this.picture_x[35, 6] = Color.Black;
+			this.picture_x[36, 6] = Color.Black;
+			
+			this.picture_x[35, 5] = Color.Black;
+			this.picture_x[36, 5] = Color.Black;
+			
+			this.picture_x[38, 3] = Color.Black;
+			this.picture_x[39, 3] = Color.Black;
+
+			for (int r = 31; r <= 43; r++)
+			{
+				for (int c = 35; c <= 47; c++)
+				{
+					this.picture_x[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 27; r <= 30; r++)
+			{
+				for (int c = 40; c <= 44; c++)
+				{
+					this.picture_x[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 24; r <= 26; r++)
+			{
+				for (int c = 40; c <= 42; c++)
+				{
+					this.picture_x[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_x[22, 40] = Color.Black;
+			this.picture_x[23, 40] = Color.Black;
+			
+			this.picture_x[23, 41] = Color.Black;
+			
+			this.picture_x[26, 43] = Color.Black;
+			
+			this.picture_x[29, 45] = Color.Black;
+			this.picture_x[30, 45] = Color.Black;
+			
+			this.picture_x[30, 46] = Color.Black;
+
+			for (int r = 31; r <= 36; r++)
+			{
+				for (int c = 31; c <= 34; c++)
+				{
+					this.picture_x[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 31; r <= 33; r++)
+			{
+				for (int c = 29; c <= 30; c++)
+				{
+					this.picture_x[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 37; r <= 40; r++)
+			{
+				for (int c = 33; c <= 34; c++)
+				{
+					this.picture_x[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_x[41, 34] = Color.Black;
+			this.picture_x[42, 34] = Color.Black;
+			
+			this.picture_x[37, 32] = Color.Black;
+			this.picture_x[38, 32] = Color.Black;
+			
+			this.picture_x[34, 30] = Color.Black;
+			this.picture_x[35, 30] = Color.Black;
+			
+			this.picture_x[31, 28] = Color.Black;
 		}
 
 		private void SetPicture_1()

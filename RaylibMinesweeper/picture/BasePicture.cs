@@ -42,7 +42,7 @@
             }
         }
 
-        public virtual void Draw(int x, int y)
+        public void Draw(int x, int y)
         {
             for(int row = 0;row < this.picture.GetLength(0);row++)
             {
