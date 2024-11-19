@@ -440,6 +440,41 @@
 			this.picture_x[35, 30] = Color.Black;
 			
 			this.picture_x[31, 28] = Color.Black;
+
+			for (int r = 36; r <= 43; r++)
+			{
+				for (int c = 48; c <= 50; c++)
+				{
+					this.picture_x[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 40; r <= 43; r++)
+			{
+				for (int c = 51; c <= 53; c++)
+				{
+					this.picture_x[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_x[33, 48] = Color.Black;
+			this.picture_x[34, 48] = Color.Black;
+			this.picture_x[35, 48] = Color.Black;
+			
+			this.picture_x[34, 49] = Color.Black;
+			this.picture_x[35, 49] = Color.Black;
+			
+			this.picture_x[37, 51] = Color.Black;
+			this.picture_x[38, 51] = Color.Black;
+			this.picture_x[39, 51] = Color.Black;
+			
+			this.picture_x[39, 52] = Color.Black;
+			
+			this.picture_x[41, 54] = Color.Black;
+			this.picture_x[42, 54] = Color.Black;
+			this.picture_x[43, 54] = Color.Black;
+			
+			this.picture_x[43, 55] = Color.Black;
 		}
 
 		private void SetPicture_1()
@@ -604,6 +639,71 @@
 			{
 				this.picture_0[2, c] = Color.Black;
 			}
+
+			for (int r = 3; r <= 11; r++)
+			{
+				for (int c = 10; c <= 40; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 12; r <= 50; r++)
+			{
+				for (int c = 3; c <= 17; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 7; r <= 11; r++)
+			{
+				for (int c = 6; c <= 9; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 9; r <= 11; r++)
+			{
+				for (int c = 4; c <= 5; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_0[11, 3] = Color.Black;
+			
+			this.picture_0[8, 5] = Color.Black;
+			
+			this.picture_0[6, 7] = Color.Black;
+			this.picture_0[6, 8] = Color.Black;
+			this.picture_0[6, 9] = Color.Black;
+			
+			this.picture_0[5, 8] = Color.Black;
+			this.picture_0[5, 9] = Color.Black;
+			
+			this.picture_0[4, 9] = Color.Black;
+
+			for (int r = 12; r <= 16; r++)
+			{
+				for (int c = 18; c <= 19; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_0[17, 18] = Color.Black;
+			this.picture_0[18, 18] = Color.Black;
+			this.picture_0[19, 18] = Color.Black;
+			this.picture_0[20, 18] = Color.Black;
+			
+			this.picture_0[12, 20] = Color.Black;
+			this.picture_0[13, 20] = Color.Black;
+			this.picture_0[14, 20] = Color.Black;
+			
+			this.picture_0[12, 21] = Color.Black;
+			this.picture_0[12, 22] = Color.Black;
 		}
 
 		private void SetPicture_6()

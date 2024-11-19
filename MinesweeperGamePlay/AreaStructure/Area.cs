@@ -119,22 +119,24 @@
 			Random rnd = new Random();
 
 			HashSet<IField> set = new HashSet<IField>();
-			set.Add(field);
 
 			do
 			{
 				int x = rnd.Next(0, this.maxX);
 				int y = rnd.Next(0, this.maxY);
 
-				field = new VisibleField(x, y, FieldSymbol.Mine);
+				IField newField = new VisibleField(x, y, FieldSymbol.Mine);
 
-				if (!set.Contains(field))
+				if (!newField.Equals(field))
 				{
-					set.Add(field);
-					this[x, y] = field;
-					mineNum--;
+					set.Add(newField);
 				}
-			} while (mineNum > 0);
+			} while (mineNum != set.Count);
+
+			foreach (var item in set)
+			{
+				this[item.X, item.Y] = item;
+			}
 
 			this.SetNumbers();
 		}
