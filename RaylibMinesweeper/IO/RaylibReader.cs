@@ -37,7 +37,12 @@
 				return new Transfer((int)position.Y, (int)position.X, FieldSymbol.Mark);
 			}
 
-			return new Transfer(-1, -1, FieldSymbol.Noting);
+            if (IsKeyPressed(KeyboardKey.Space))
+            {
+				return new Transfer(-1, -1, FieldSymbol.Space);
+            }
+
+            return new Transfer(-1, -1, FieldSymbol.Noting);
 		}
 	}
 }

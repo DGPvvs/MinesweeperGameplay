@@ -2,8 +2,6 @@
 {
 	using Raylib_cs;
 	using RaylibMinesweeper.Common;
-	using System;
-	using static Raylib_cs.Raylib;
 
 	public class StartPicture : BasePicture
 	{
@@ -20,6 +18,7 @@
 
 			this.picture_0 = new Color[64, 51];
 			this.picture_1 = new Color[62, 36];
+			this.picture_3 = new Color[64, 50];
 			this.picture_6 = new Color[64, 51];
 			this.picture_9 = new Color[64, 51];
 			this.picture_x = new Color[44, 56];
@@ -28,10 +27,448 @@
 			this.SetPicture_6();
 			this.SetPicture_0();
 			this.SetPicture_1();
+			this.SetPicture_3();
 			this.SetPicture_X();
 
 			this.SetBaseColor(baseColor);
 			this.SetButtons();
+		}
+
+		private void SetPicture_3()
+		{
+			for (int r = 0; r < this.picture_3.GetLength(0); r++)
+			{
+				for (int c = 0; c < this.picture_3.GetLength(1); c++)
+				{
+					this.picture_3[r, c] = Color.White;
+				}				
+			}
+
+			for (int r = 0; r <= 10; r++)
+			{
+				for (int c = 15; c <= 32; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 13; r <= 16; r++)
+			{
+				for (int c = 0; c <= 16; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 17; r <= 18; r++)
+			{
+				for (int c = 11; c <= 16; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_3[17, 6] = Color.Black;
+			this.picture_3[17, 7] = Color.Black;
+			this.picture_3[17, 8] = Color.Black;
+			this.picture_3[17, 9] = Color.Black;
+			this.picture_3[17, 10] = Color.Black;
+
+			for (int r = 8; r <= 12; r++)
+			{
+				for (int c = 3; c <= 14; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_3[11, 1] = Color.Black;
+			this.picture_3[12, 1] = Color.Black;
+			
+			this.picture_3[9, 2] = Color.Black;
+			this.picture_3[10, 2] = Color.Black;
+			this.picture_3[11, 2] = Color.Black;
+			this.picture_3[12, 2] = Color.Black;
+
+			for (int r = 11; r <= 12; r++)
+			{
+				for (int c = 15; c <= 19; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_3[13, 17] = Color.Black;
+			this.picture_3[14, 17] = Color.Black;
+			this.picture_3[15, 17] = Color.Black;
+			
+			this.picture_3[13, 18] = Color.Black;
+			
+			this.picture_3[11, 20] = Color.Black;
+			this.picture_3[11, 21] = Color.Black;
+
+			for (int r = 3; r <= 7; r++)
+			{
+				for (int c = 8; c <= 14; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 5; r <= 7; r++)
+			{
+				for (int c = 6; c <= 7; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_3[1, 12] = Color.Black;
+			this.picture_3[1, 13] = Color.Black;
+			this.picture_3[1, 14] = Color.Black;
+			
+			this.picture_3[2, 10] = Color.Black;
+			this.picture_3[2, 11] = Color.Black;
+			this.picture_3[2, 12] = Color.Black;
+			this.picture_3[2, 13] = Color.Black;
+			this.picture_3[2, 14] = Color.Black;
+			
+			this.picture_3[7, 4] = Color.Black;
+			
+			this.picture_3[6, 5] = Color.Black;
+			this.picture_3[7, 5] = Color.Black;
+			
+			this.picture_3[4, 7] = Color.Black;
+
+			for (int r = 12; r <= 18; r++)
+			{
+				for (int c = 29; c <= 46; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 9; r <= 11; r++)
+			{
+				for (int c = 25; c <= 45; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_3[12, 27] = Color.Black;
+			this.picture_3[12, 28] = Color.Black;
+			
+			this.picture_3[13, 28] = Color.Black;
+
+			for (int r = 3; r <= 8; r++)
+			{
+				for (int c = 33; c <= 39; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 1; r <= 2; r++)
+			{
+				for (int c = 33; c <= 36; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_3[2, 37] = Color.Black;
+			this.picture_3[2, 38] = Color.Black;
+
+			for (int r = 5; r <= 8; r++)
+			{
+				for (int c = 40; c <= 42; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_3[4, 40] = Color.Black;
+			this.picture_3[4, 41] = Color.Black;
+			
+			this.picture_3[6, 43] = Color.Black;
+			this.picture_3[7, 43] = Color.Black;
+			this.picture_3[8, 43] = Color.Black;
+
+			this.picture_3[8, 44] = Color.Black;
+
+			for (int r = 23; r <= 35; r++)
+			{
+				for (int c = 19; c <= 38; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_3[33, 18] = Color.Black;
+			this.picture_3[34, 18] = Color.Black;
+			this.picture_3[35, 18] = Color.Black;
+
+			for (int r = 19; r <= 22; r++)
+			{
+				for (int c = 29; c <= 44; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_3[22, 26] = Color.Black;
+			this.picture_3[22, 27] = Color.Black;
+			this.picture_3[22, 28] = Color.Black;
+			
+			this.picture_3[21, 27] = Color.Black;
+			this.picture_3[21, 28] = Color.Black;
+			
+			this.picture_3[20, 28] = Color.Black;
+			
+			this.picture_3[19, 45] = Color.Black;
+			this.picture_3[20, 45] = Color.Black;
+			this.picture_3[21, 45] = Color.Black;
+
+			for (int r = 23; r <= 26; r++)
+			{
+				for (int c = 39; c <= 41; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_3[27, 39] = Color.Black;
+			
+			this.picture_3[23, 42] = Color.Black;
+			this.picture_3[24, 42] = Color.Black;
+			this.picture_3[25, 42] = Color.Black;
+			
+			this.picture_3[23, 43] = Color.Black;
+			this.picture_3[24, 43] = Color.Black;
+			
+			this.picture_3[23, 44] = Color.Black;
+
+			for (int r = 38; r <= 47; r++)
+			{
+				for (int c = 32; c <= 49; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 36; r <= 37; r++)
+			{
+				for (int c = 30; c <= 48; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_3[36, 29] = Color.Black;
+			
+			this.picture_3[38, 31] = Color.Black;
+			this.picture_3[39, 31] = Color.Black;
+
+			for (int r = 31; r <= 35; r++)
+			{
+				for (int c = 39; c <= 44; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 29; r <= 30; r++)
+			{
+				for (int c = 39; c <= 41; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_3[30, 42] = Color.Black;
+			this.picture_3[30, 43] = Color.Black;
+
+			for (int r = 33; r <= 35; r++)
+			{
+				for (int c = 45; c <= 46; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_3[32, 45] = Color.Black;
+			
+			this.picture_3[34, 47] = Color.Black;
+			this.picture_3[35, 47] = Color.Black;
+
+			for (int r = 52; r <= 62; r++)
+			{
+				for (int c = 14; c <= 34; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 44; r <= 51; r++)
+			{
+				for (int c = 7; c <= 16; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_3[43, 15] = Color.Black;
+
+			for (int r = 45; r <= 50; r++)
+			{
+				for (int c = 0; c <= 6; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 49; r <= 51; r++)
+			{
+				for (int c = 17; c <= 18; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_3[47, 17] = Color.Black;
+			this.picture_3[48, 17] = Color.Black;
+			
+			this.picture_3[50, 19] = Color.Black;
+			this.picture_3[51, 19] = Color.Black;
+			
+			this.picture_3[51, 20] = Color.Black;
+
+			for (int r = 52; r <= 58; r++)
+			{
+				for (int c = 7; c <= 13; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 51; r <= 55; r++)
+			{
+				for (int c = 3; c <= 6; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_3[51, 1] = Color.Black;
+			this.picture_3[52, 1] = Color.Black;
+			
+			this.picture_3[51, 2] = Color.Black;
+			this.picture_3[52, 2] = Color.Black;
+			this.picture_3[53, 2] = Color.Black;
+			
+			this.picture_3[56, 4] = Color.Black;
+			this.picture_3[56, 5] = Color.Black;
+			this.picture_3[56, 6] = Color.Black;
+			
+			this.picture_3[57, 5] = Color.Black;
+			this.picture_3[57, 6] = Color.Black;
+			
+			this.picture_3[58, 6] = Color.Black;
+
+			for (int r = 59; r <= 61; r++)
+			{
+				for (int c = 11; c <= 13; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_3[59, 8] = Color.Black;
+			this.picture_3[59, 9] = Color.Black;
+			this.picture_3[59, 10] = Color.Black;
+			
+			this.picture_3[60, 9] = Color.Black;
+			this.picture_3[60, 10] = Color.Black;
+
+			for (int r = 48; r <= 51; r++)
+			{
+				for (int c = 31; c <= 47; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_3[51, 20] = Color.Black;
+			
+			this.picture_3[47, 31] = Color.Black;
+			
+			this.picture_3[51, 28] = Color.Black;
+			this.picture_3[51, 29] = Color.Black;
+			this.picture_3[51, 30] = Color.Black;
+			
+			this.picture_3[50, 29] = Color.Black;
+			this.picture_3[50, 30] = Color.Black;
+			
+			this.picture_3[49, 30] = Color.Black;
+			
+			this.picture_3[48, 48] = Color.Black;
+			this.picture_3[49, 48] = Color.Black;
+			this.picture_3[50, 48] = Color.Black;
+
+			for (int r = 52; r <= 58; r++)
+			{
+				for (int c = 35; c <= 42; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 59; r <= 61; r++)
+			{
+				for (int c = 35; c <= 37; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_3[60, 38] = Color.Black;
+			this.picture_3[60, 39] = Color.Black;
+			
+			this.picture_3[59, 38] = Color.Black;
+			this.picture_3[59, 39] = Color.Black;
+			this.picture_3[59, 40] = Color.Black;
+			this.picture_3[59, 41] = Color.Black;
+			
+			this.picture_3[63, 19] = Color.Black;
+			this.picture_3[63, 20] = Color.Black;
+			this.picture_3[63, 21] = Color.Black;
+			this.picture_3[63, 22] = Color.Black;
+			this.picture_3[63, 23] = Color.Black;
+			this.picture_3[63, 24] = Color.Black;
+			this.picture_3[63, 25] = Color.Black;
+			this.picture_3[63, 26] = Color.Black;
+			this.picture_3[63, 27] = Color.Black;
+			this.picture_3[63, 28] = Color.Black;
+			this.picture_3[63, 29] = Color.Black;
+
+			for (int r = 52; r <= 55; r++)
+			{
+				for (int c = 43; c <= 45; c++)
+				{
+					this.picture_3[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_3[56, 43] = Color.Black;
+			this.picture_3[56, 44] = Color.Black;
+			
+			this.picture_3[57, 43] = Color.Black;
+			
+			this.picture_3[52, 46] = Color.Black;
+			this.picture_3[52, 47] = Color.Black;
+			
+			this.picture_3[53, 46] = Color.Black;
 		}
 
 		private void SetPicture_X()
@@ -704,6 +1141,290 @@
 			
 			this.picture_0[12, 21] = Color.Black;
 			this.picture_0[12, 22] = Color.Black;
+
+			this.picture_0[14, 2] = Color.Black;
+			this.picture_0[15, 2] = Color.Black;
+			this.picture_0[16, 2] = Color.Black;
+			
+			this.picture_0[45, 2] = Color.Black;
+			this.picture_0[46, 2] = Color.Black;
+			this.picture_0[47, 2] = Color.Black;
+			this.picture_0[48, 2] = Color.Black;
+
+			for (int r = 22; r <= 39; r++)
+			{
+				for (int c = 0; c <= 2; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 17; r <= 31; r++)
+			{
+				for (int c = 1; c <= 2; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 40; r <= 44; r++)
+			{
+				for (int c = 1; c <= 2; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 12; r <= 51; r++)
+			{
+				for (int c = 33; c <= 47; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 12; r <= 14; r++)
+			{
+				for (int c = 30; c <= 32; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_0[12, 28] = Color.Black;
+			this.picture_0[12, 29] = Color.Black;
+			
+			this.picture_0[13, 29] = Color.Black;
+			
+			this.picture_0[15, 31] = Color.Black;
+			this.picture_0[16, 31] = Color.Black;
+			
+			this.picture_0[15, 32] = Color.Black;
+			this.picture_0[16, 32] = Color.Black;
+			this.picture_0[17, 32] = Color.Black;
+			this.picture_0[18, 32] = Color.Black;
+			this.picture_0[19, 32] = Color.Black;
+			this.picture_0[20, 32] = Color.Black;
+			this.picture_0[21, 32] = Color.Black;
+			
+			this.picture_0[4, 41] = Color.Black;
+			this.picture_0[5, 41] = Color.Black;
+			
+			this.picture_0[5, 42] = Color.Black;
+			
+			this.picture_0[7, 44] = Color.Black;
+			this.picture_0[8, 44] = Color.Black;
+			
+			this.picture_0[8, 45] = Color.Black;
+			
+			this.picture_0[10, 46] = Color.Black;
+			this.picture_0[11, 46] = Color.Black;
+			
+			this.picture_0[23, 50] = Color.Black;
+			
+			this.picture_0[14, 48] = Color.Black;
+			this.picture_0[15, 48] = Color.Black;
+			this.picture_0[16, 48] = Color.Black;
+			this.picture_0[17, 48] = Color.Black;
+			
+			this.picture_0[46, 48] = Color.Black;
+			this.picture_0[47, 48] = Color.Black;
+			this.picture_0[48, 48] = Color.Black;
+
+			for (int r = 10; r <= 23; r++)
+			{
+				for (int c = 48; c <= 49; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 6; r <= 11; r++)
+			{
+				for (int c = 41; c <= 43; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 9; r <= 11; r++)
+			{
+				for (int c = 44; c <= 45; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 24; r <= 39; r++)
+			{
+				for (int c = 48; c <= 50; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 40; r <= 45; r++)
+			{
+				for (int c = 48; c <= 49; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 51; r <= 59; r++)
+			{
+				for (int c = 10; c <= 32; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 52; r <= 57; r++)
+			{
+				for (int c = 33; c <= 43; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 46; r <= 50; r++)
+			{
+				for (int c = 18; c <= 19; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_0[41, 18] = Color.Black;
+			this.picture_0[42, 18] = Color.Black;
+			this.picture_0[43, 18] = Color.Black;
+			this.picture_0[44, 18] = Color.Black;
+			this.picture_0[45, 18] = Color.Black;
+			
+			this.picture_0[48, 20] = Color.Black;
+			this.picture_0[49, 20] = Color.Black;
+			this.picture_0[50, 20] = Color.Black;
+			
+			this.picture_0[49, 21] = Color.Black;
+			this.picture_0[50, 21] = Color.Black;
+			
+			this.picture_0[50, 22] = Color.Black;
+
+			for (int r = 48; r <= 50; r++)
+			{
+				for (int c = 30; c <= 32; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_0[50, 28] = Color.Black;
+			this.picture_0[50, 29] = Color.Black;
+			
+			this.picture_0[46, 31] = Color.Black;
+			this.picture_0[47, 31] = Color.Black;
+			
+			this.picture_0[42, 32] = Color.Black;
+			this.picture_0[43, 32] = Color.Black;
+			this.picture_0[44, 32] = Color.Black;
+			this.picture_0[45, 32] = Color.Black;
+			this.picture_0[46, 32] = Color.Black;
+			this.picture_0[47, 32] = Color.Black;
+
+			for (int r = 52; r <= 53; r++)
+			{
+				for (int c = 44; c <= 46; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_0[54, 44] = Color.Black;
+			this.picture_0[55, 44] = Color.Black;
+			this.picture_0[56, 44] = Color.Black;
+
+			this.picture_0[54, 45] = Color.Black;
+
+			for (int r = 51; r <= 55; r++)
+			{
+				for (int c = 6; c <= 9; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_0[51, 4] = Color.Black;
+			this.picture_0[52, 4] = Color.Black;
+			
+			this.picture_0[51, 5] = Color.Black;
+			this.picture_0[52, 5] = Color.Black;
+			this.picture_0[53, 5] = Color.Black;
+			this.picture_0[54, 5] = Color.Black;
+			
+			this.picture_0[56, 7] = Color.Black;
+			this.picture_0[56, 8] = Color.Black;
+			this.picture_0[56, 9] = Color.Black;
+			
+			this.picture_0[57, 8] = Color.Black;
+			this.picture_0[57, 9] = Color.Black;
+			
+			this.picture_0[58, 9] = Color.Black;
+
+			for (int r = 58; r <= 60; r++)
+			{
+				for (int c = 33; c <= 39; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_0[58, 40] = Color.Black;
+			this.picture_0[58, 41] = Color.Black;
+			this.picture_0[58, 42] = Color.Black;
+			
+			this.picture_0[59, 40] = Color.Black;
+
+			for (int r = 60; r <= 63; r++)
+			{
+				for (int c = 21; c <= 29; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 60; r <= 62; r++)
+			{
+				for (int c = 30; c <= 32; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			for (int r = 60; r <= 62; r++)
+			{
+				for (int c = 16; c <= 20; c++)
+				{
+					this.picture_0[r, c] = Color.Black;
+				}
+			}
+
+			this.picture_0[60, 12] = Color.Black;
+			this.picture_0[60, 13] = Color.Black;
+			this.picture_0[60, 14] = Color.Black;
+			this.picture_0[60, 15] = Color.Black;
+			
+			this.picture_0[61, 13] = Color.Black;
+			this.picture_0[61, 14] = Color.Black;
+			this.picture_0[61, 15] = Color.Black;
+			
+			this.picture_0[61, 33] = Color.Black;
+			this.picture_0[61, 34] = Color.Black;
+			this.picture_0[61, 35] = Color.Black;
+			this.picture_0[61, 36] = Color.Black;
+			this.picture_0[61, 37] = Color.Black;
+			
+			this.picture_0[62, 33] = Color.Black;
+			this.picture_0[62, 34] = Color.Black;
 		}
 
 		private void SetPicture_6()
@@ -1223,6 +1944,14 @@
 				for (int c = 0; c < this.picture_0.GetLength(1); c++)
 				{
 					this[71 + r, 817 + c] = this.picture_0[r, c];
+				}
+			}
+
+			for (int r = 0; r < this.picture_3.GetLength(0); r++)
+			{
+				for (int c = 0; c < this.picture_3.GetLength(1); c++)
+				{
+					this[71 + r, 761 + c] = this.picture_3[r, c];
 				}
 			}
 

@@ -17,5 +17,6 @@
 		Mine = 0x2A,    //'*'
 		Mark = 0x4D,    //'M'
 		Open = 0x4F,    //'O'
+		Space = Empty,
 	}
 }

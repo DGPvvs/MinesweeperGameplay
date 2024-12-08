@@ -121,8 +121,15 @@
 								SetWindowSize(width * (CELL_SIZE), height * (CELL_SIZE));
 								wTO = new WriteTransferObject(GameStatus.InProgress, this.area, PublicConstant.STARTED_TITLE);
 							}							
-						}										
-					}					
+						}						
+					}
+
+					if ((this.status == GameStatus.Win || this.status == GameStatus.Lose) && answer.Action == FieldSymbol.Space)
+					{
+						this.status = GameStatus.Started;
+						SetWindowSize(PublicConstant.START_WIDTH, PublicConstant.START_HEIGHT);
+						SetWindowTitle(PublicConstant.STARTED_TITLE);
+					}
 				}
 			}
 		}
